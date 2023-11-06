@@ -32,6 +32,13 @@ class MyComponent extends React.Component {
         })
     } 
 
+    deleteAJob = (job )=>{
+        let curentJob = this.state.arrJobs;
+        curentJob = curentJob.filter(item=> item.id !==job.id);
+        this.setState({
+            arrJobs: curentJob
+        })
+    }
 
     render() {
         // let name = "LeTuanKiet";
@@ -42,6 +49,8 @@ class MyComponent extends React.Component {
                 />
                 <ChildComponent
                     abc= {this.state.arrJobs}
+                    deleteAJob={this.deleteAJob}
+                    
                 />
             </React.Fragment>
         );

@@ -5,6 +5,23 @@ class MyComponent extends React.Component {
     state = {
         firstName: '',
         lastName: '',
+        arrJobs: [
+            {
+                id: 'abcjob1',
+                title:'developer',
+                salary:'5000'
+            },
+            {
+                id: 'abcjob2',
+                title:'programmer',
+                salary:'6000'
+            },
+            {
+                id: 'abcjob3',
+                title:'slient',
+                salary:'50000'
+            },
+        ],
     }
 
     handleOnChange = (event, id) => {
@@ -38,8 +55,9 @@ class MyComponent extends React.Component {
                     />
                 </form>
                 <ChildComponent
-                    name={'child one'}
+                    name={this.state.firstName}
                     age={'26'}
+                    abc= {this.state.arrJobs}
                 />
             </React.Fragment>
         );

@@ -15,7 +15,7 @@ class ChildComponent extends React.Component {
 
 
     render() {
-        let { name, age, abc } = this.props;
+        let { abc } = this.props;
         let showJob = this.state.showJob;
         console.log("check props: ", this.props);
         return (

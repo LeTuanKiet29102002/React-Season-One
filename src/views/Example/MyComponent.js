@@ -1,5 +1,6 @@
 import React from "react";
 import ChildComponent from "./ChildComponent";
+import AddComponent from "./AddComponent";
 
 class MyComponent extends React.Component {
     state = {
@@ -24,39 +25,16 @@ class MyComponent extends React.Component {
         ],
     }
 
-    handleOnChange = (event, id) => {
-        // console.log('>>calll render', this.state);
-        this.setState({
-            [id]: event.target.value,
-        })
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log('check data input ', this.state);
-    }
-
+    
+ 
 
 
     render() {
         // let name = "LeTuanKiet";
         return (
             <React.Fragment>
-                <h2>HTML Forms</h2>
-                <form>
-                    <label htmlFor="fname">First name:</label><br />
-                    <input type="text" value={this.state.firstName} onChange={(event) => this.handleOnChange(event, 'firstName')} /><br />
-                    <label htmlFor="lname">Last name:</label><br />
-                    <input type="text" value={this.state.lastName}
-                        onChange={(event) => this.handleOnChange(event, 'lastName')}
-                    /><br /><br />
-                    <input type="button" value="Submit"
-                        onClick={(event) => this.handleSubmit(event)}
-                    />
-                </form>
+                <AddComponent/>
                 <ChildComponent
-                    name={this.state.firstName}
-                    age={'26'}
                     abc= {this.state.arrJobs}
                 />
             </React.Fragment>

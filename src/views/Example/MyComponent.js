@@ -12,13 +12,26 @@ class MyComponent extends React.Component {
         })
     }
 
+    handleOnClick = ()=>{
+        // this.setState({
+        //     name:event.target.value
+        // })
+        // alert('hello',this.setState.name)
+        alert('hello '+this.state.name);
+    }
+
 
     render() {
         // let name = "LeTuanKiet";
         return (
             <React.Fragment>
-                <div><input value={this.state.name} type="text" onChange={(event)=>{this.handleOnChangeName(event)}} />My name is: {this.state.name}</div>
-                <div>hello my component with {this.state.address}</div>
+                <div className="first"><input value={this.state.name} type="text" onChange={(event)=>{this.handleOnChangeName(event)}} />My name is: {this.state.name}</div>
+                <div className="second">hello my component with {this.state.address}</div>
+                <div className="third">
+                    <button onClick={()=>this.handleOnClick()}>
+                        Click me
+                    </button>
+                </div>
             </React.Fragment>
         );
     }

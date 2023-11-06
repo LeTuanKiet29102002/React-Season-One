@@ -7,6 +7,8 @@ class MyComponent extends React.Component {
     }
 
     handleOnChangeName=(event)=>{
+        // console.log(event.target.value, "event target:",event.target, "event object : ", event);
+        // merge
         this.setState({
             name:event.target.value
         })

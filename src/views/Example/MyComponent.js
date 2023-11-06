@@ -25,15 +25,21 @@ class MyComponent extends React.Component {
         ],
     }
 
-    
- 
+    addNewJob = (job)=>{
+        console.log('check new job: ',job );
+        this.setState({
+            arrJobs: [...this.state.arrJobs, job]
+        })
+    } 
 
 
     render() {
         // let name = "LeTuanKiet";
         return (
             <React.Fragment>
-                <AddComponent/>
+                <AddComponent
+                    addNewJob={this.addNewJob}
+                />
                 <ChildComponent
                     abc= {this.state.arrJobs}
                 />

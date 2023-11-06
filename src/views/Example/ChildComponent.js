@@ -1,16 +1,36 @@
 import React from "react";
 
-class ChildComponent extends React.Component {
+// class ChildComponent extends React.Component {
 
 
 
 
-    render() {
-        let { name, age, abc } = this.props;
-        console.log("check props: ", this.props);
+//     render() {
+//         let { name, age, abc } = this.props;
+//         console.log("check props: ", this.props);
+//         return (
+//             <React.Fragment>
+//                 Child Component:{name} - {age}
+//                 <div className="job-list">
+//                     {
+//                         abc.map((item, index) => {
+//                             return (
+//                                 <div key={item.id}>
+//                                     {item.title}-{item.salary}
+//                                 </div>
+//                             )
+//                         })
+//                     }
+//                 </div>
+//             </React.Fragment>
+//         );
+//     }
+// }
+
+const ChildComponent =(props)=>{
+    let { abc} = props;
+        console.log("check props: ", props);
         return (
-            <React.Fragment>
-                Child Component:{name} - {age}
                 <div className="job-list">
                     {
                         abc.map((item, index) => {
@@ -22,9 +42,7 @@ class ChildComponent extends React.Component {
                         })
                     }
                 </div>
-            </React.Fragment>
-        );
-    }
+        )
 }
 
 export default ChildComponent;

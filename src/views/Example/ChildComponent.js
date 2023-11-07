@@ -1,4 +1,5 @@
 import React from "react";
+import './Demo.scss'
 
 class ChildComponent extends React.Component {
 
@@ -20,12 +21,12 @@ class ChildComponent extends React.Component {
     render() {
         let { abc } = this.props;
         let showJob = this.state.showJob;
-        console.log("check props: ", this.props);
+        // console.log("check props: ", this.props);
         return (
             <React.Fragment>
                 {/* Child Component:{name} - {age} */}
                 {showJob===false ?
-                <div><button onClick={()=>{this.handleshowJob()}}>Show</button></div>
+                <div><button className="btn-show" onClick={()=>{this.handleshowJob()}}>Show</button></div>
                 :
                 <>
                 <div className="job-list">
@@ -39,7 +40,7 @@ class ChildComponent extends React.Component {
                         })
                     }
                 </div>
-                <div><button onClick={()=>{this.handleshowJob()}}>Hide</button></div>
+                <div><button className="btn-hide" onClick={()=>{this.handleshowJob()}}>Hide</button></div>
                 </>
                 }
             </React.Fragment>

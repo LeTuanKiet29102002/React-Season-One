@@ -10,7 +10,7 @@ class ListTodo extends React.Component {
         listTodos: [
             { id: 'todo1', title: 'doing homework', salary: 1000 },
             { id: 'todo2', title: 'watching tivi', salary: 2000 },
-            { id: 'todo3', title: 'learning English', salary: 3000 },
+            { id: 'todo3', title: 'learning English', salary: 3000 }
         ],
         editTodobtn: {}
 
@@ -71,18 +71,20 @@ class ListTodo extends React.Component {
         // let { listTodos } = this.state;
         // let listTodos = this.state.listTodos
         return (
-            <div className='list-todo-container'>
-                <AddJobTodo
-                    AddNewTodo={this.AddNewTodo}
-                />
-                <TableJobTodo
-                    ArrayJobTodo={this.state.listTodos}
-                    editTodobtn={this.state.editTodobtn}
-                    DeleteTodo={this.DeleteTodo}
-                    EditTodo={this.EditTodo}
-                    UpdateEditTodoBtn={this.UpdateEditTodoBtn}
-                />
-                {/* <div className='list-todo-content'>
+            <>
+                <p>Simple TODO Apps with Reactjs ( KiMoon )</p>
+                <div className='list-todo-container'>
+                    <AddJobTodo
+                        AddNewTodo={this.AddNewTodo}
+                    />
+                    <TableJobTodo
+                        ArrayJobTodo={this.state.listTodos}
+                        editTodobtn={this.state.editTodobtn}
+                        DeleteTodo={this.DeleteTodo}
+                        EditTodo={this.EditTodo}
+                        UpdateEditTodoBtn={this.UpdateEditTodoBtn}
+                    />
+                    {/* <div className='list-todo-content'>
                     <table className="todo-child">
                         <tbody>
                             <tr>
@@ -123,7 +125,8 @@ class ListTodo extends React.Component {
                     </table>
                 </div> */}
 
-            </div>
+                </div>
+            </>
         )
     }
 

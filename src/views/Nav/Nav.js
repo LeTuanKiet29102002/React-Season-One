@@ -1,6 +1,6 @@
 import React from "react";
 import './Nav.scss'
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 class Nav extends React.Component {
     render() {
@@ -16,6 +16,9 @@ class Nav extends React.Component {
                 <NavLink className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "active" : ""
                 } to="/about">About</NavLink>
+                <NavLink className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                } to="/user">User</NavLink>
             </div>
         )
     }

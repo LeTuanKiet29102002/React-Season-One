@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Nav from "./Nav/Nav";
 import HomePage from "./Home/HomaPage";
 import { Routes, Route } from "react-router-dom";
+import ListUser from "./User/ListUser";
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/todo" element={<ListTodo/>} />
           <Route path="/about" element={<MyComponent />} />
+          <Route path="/user" element={<ListUser />} />
         </Routes>
       </header>
 

@@ -1,0 +1,52 @@
+$bgWidth: 10000px;
+.list-user-container {
+    .input {
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    .list-user-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        .user-child {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 70%;
+            font-family: arial, sans-serif;
+            
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            td{
+                background-color: #f4efef;
+                color: black;
+            }
+            th {
+                background: linear-gradient(to right, #1e5799 0%, #2ce0bf 19%, #76dd2c 40%, #dba62b 60%, #e02cbf 83%, #1e5799 100%);
+                background-size: $bgWidth 100%;
+                animation: bg 15s linear infinite;
+                @keyframes bg {
+                    0% {
+                        background-position-x: 0;
+                    }
+                
+                    100% {
+                        background-position-x: $bgWidth;
+                    }
+                }
+            }
+
+            .btn-action {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+

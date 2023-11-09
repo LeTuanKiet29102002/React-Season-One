@@ -98,11 +98,10 @@ class TableJobTodo extends React.Component {
                                                 }
                                             </>
                                         }
-                                        <td >
+                                        <td className='btn-action'>
                                             {isEmptyObj === false && editTodobtn.id === item.id ?
                                                 <Tooltip title="Lưu">
                                                     <Button
-                                                        className="btn-action"
                                                         shape="circle"
                                                         icon={<CheckOutlined />}
                                                     onClick={() => this.handleSaveTodo(item)}

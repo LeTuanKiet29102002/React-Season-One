@@ -43,7 +43,8 @@ $bgWidth: 10000px;
             }
 
             .btn-action {
-                margin-right: 20px;
+                display: flex;
+                justify-content: space-around;
             }
         }
     }

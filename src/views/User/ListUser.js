@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { EditOutlined, DeleteOutlined, CheckOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, CheckOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Tooltip, Input } from "antd";
-import './ListUser.scss'
+import './ListUser.scss';
+import { useNavigate } from 'react-router-dom';
+
 
 class ListUser extends React.Component {
     state = {
@@ -14,6 +16,7 @@ class ListUser extends React.Component {
             listUser: res && res.data && res.data.data ? res.data.data : []
         })
     }
+
     render() {
         let { listUser } = this.state
         return (
@@ -39,7 +42,7 @@ class ListUser extends React.Component {
                                             <td>{item.email}</td>
                                             <td>{item.first_name}</td>
                                             <td>{item.last_name}</td>
-                                            <td >
+                                            <td className="btn-action">
                                                 {/* <Tooltip title="Lưu">
                                                     <Button
                                                         className="btn-action"
@@ -50,7 +53,6 @@ class ListUser extends React.Component {
                                                 </Tooltip> */}
                                                 <Tooltip title="Sửa">
                                                     <Button
-                                                        className="btn-action"
                                                         shape="circle"
                                                         icon={<EditOutlined />}
                                                         onClick={() => this.handleEditTodo(item)}
@@ -64,6 +66,16 @@ class ListUser extends React.Component {
                                                         onClick={() => this.handleDeleteTodo(item)}
                                                     />
                                                 </Tooltip>
+
+                                                <DetailBtn userId={item.id} /> {/* Truyền userId xuống DetailBtn */}
+
+                                                {/* <Tooltip title="Chi tiết">
+                                                    <Button
+                                                        shape="circle"
+                                                        icon={<InfoCircleOutlined />}
+                                                        onClick={() => this.handleDetailUser(item)}
+                                                    />
+                                                </Tooltip> */}
                                             </td>
                                         </tr>
                                     )
@@ -77,5 +89,21 @@ class ListUser extends React.Component {
     }
 }
 
+const DetailBtn = ({ userId }) => {
+    const navigate = useNavigate();
 
-export default ListUser
+    const handleDetailUser = () => {
+        navigate(`/user/${userId}`); // Đảm bảo rằng đường dẫn bắt đầu bằng '/'
+    };
+
+    return (
+        <Tooltip title="Chi tiết">
+            <Button
+                shape="circle"
+                icon={<InfoCircleOutlined />}
+                onClick={handleDetailUser} 
+            />
+        </Tooltip>
+    );
+};
+export { ListUser, DetailBtn }

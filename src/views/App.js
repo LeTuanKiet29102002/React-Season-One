@@ -7,8 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Nav from "./Nav/Nav";
 import HomePage from "./Home/HomaPage";
 import { Routes, Route } from "react-router-dom";
-import ListUser from "./User/ListUser";
-
+import { ListUser, DetailBtn } from "./User/ListUser";
+import DetailUser from "./User/DetailUser";
 
 
 // 2 component: class component, function component(function, arrow)
@@ -24,6 +24,7 @@ function App() {
           <Route path="/todo" element={<ListTodo/>} />
           <Route path="/about" element={<MyComponent />} />
           <Route path="/user" element={<ListUser />} />
+          <Route path="/user/:id" element={<DetailUser />} />
         </Routes>
       </header>
 

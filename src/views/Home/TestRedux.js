@@ -14,14 +14,42 @@ class TestRedux extends React.Component {
     handleAddUserRedux = () => {
         this.props.addUserRedux();
     }
+    handleEditUserRedux = (user) => {
+        console.log('check user click edit : ', user);
+        // let { EditRedux } = this.props;
+        // console.log('check edit redux id :', EditRedux.id);
+        this.props.updateEditRedux(user)
+        
+    }
+    handleSaveUserRedux = () => {
+        this.props.saveUserRedux();
+    }
+    handleOnChangeName = (event) => {
+        let EditUserCopy = { ...this.props.EditRedux };
+        EditUserCopy.name = event.target.value;
+
+        this.props.editUserRedux(EditUserCopy);
+    }
+    handleOnChangeAddress = (event) => {
+        let EditUserCopy = { ...this.props.EditRedux };
+        EditUserCopy.address = event.target.value;
+
+        this.props.editUserRedux(EditUserCopy);
+    }
     render() {
         let listUsers = this.props.dataRedux;
-        console.log('check props :', this.props.dataRedux);
+        let EditRedux = this.props.EditRedux;
+        console.log('check list user copy:', listUsers);
+        console.log('check edit redux :', EditRedux);
+        // console.log('check props :', this.props.dataRedux);
+        let isEmptyObj = Object.keys(EditRedux).length === 0;
+        console.log('check empty obj ', isEmptyObj);
         return (
             <div>
                 <div>Test redux</div>
-                <Tooltip title="Thêm">
+                <Tooltip title="Thêm random">
                     <Button
+                        style={{ marginTop: '20px' }}
                         icon={<UserAddOutlined />}
                         onClick={() => this.handleAddUserRedux()}
                     />
@@ -32,8 +60,8 @@ class TestRedux extends React.Component {
                             <tbody>
                                 <tr>
                                     <th>STT</th>
-                                    <th>ID</th>
                                     <th>Name</th>
+                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                                 {listUsers && listUsers.length > 0 &&
@@ -41,26 +69,54 @@ class TestRedux extends React.Component {
                                         return (
                                             <tr key={item.id}>
                                                 <td>{index + 1}</td>
-                                                <td>{item.id}</td>
-                                                <td>{item.name}</td>
-                                                <td className="btn-action">
-                                                    {/* <Tooltip title="Lưu">
-                                                    <Button
-                                                        className="btn-action"
-                                                        shape="circle"
-                                                        icon={<CheckOutlined />}
-                                                    onClick={() => this.handleSaveTodo(item)}
-                                                    />
-                                                </Tooltip> */}
+                                                {isEmptyObj === true ?
+                                                    <td>{item.name}</td>
+                                                    :
+                                                    <>
+                                                        {EditRedux.id === item.id ?
+                                                            <td><Input
+                                                                onChange={(event) => { this.handleOnChangeName(event) }}
+                                                                value={EditRedux.name} /></td>
+                                                            :
+                                                            <td>{item.name}</td>
 
-                                                    <Tooltip title="Sửa">
-                                                        <Button
-                                                            shape="circle"
-                                                            icon={<EditOutlined />}
-                                                        // onClick={() => this.handleEditTodo(item)}
-                                                        />
-                                                    </Tooltip>
+                                                        }
+                                                    </>
+                                                }
+                                                {isEmptyObj === true ?
+                                                    <td>{item.address}</td>
+                                                    :
+                                                    <>
+                                                        {EditRedux.id === item.id ?
+                                                            <td><Input
+                                                                onChange={(event) => { this.handleOnChangeAddress(event) }}
+                                                                value={EditRedux.address} /></td>
+                                                            :
+                                                            <td>{item.address}</td>
 
+                                                        }
+                                                    </>
+                                                }
+                                                <td className='btn-action'>
+                                                    {isEmptyObj === false && EditRedux.id === item.id ?
+                                                        <Tooltip title="Lưu">
+                                                            <Button
+                                                                shape="circle"
+                                                                icon={<CheckOutlined />}
+                                                                onClick={() => this.handleSaveUserRedux(item)}
+                                                            />
+                                                        </Tooltip>
+                                                        :
+
+                                                        <Tooltip title="Sửa">
+                                                            <Button
+                                                                className="btn-action"
+                                                                shape="circle"
+                                                                icon={<EditOutlined />}
+                                                                onClick={() => this.handleEditUserRedux(item)}
+                                                            />
+                                                        </Tooltip>
+                                                    }
                                                     <Tooltip title="Xóa">
                                                         <Button
                                                             shape="circle"
@@ -68,17 +124,6 @@ class TestRedux extends React.Component {
                                                             onClick={() => this.handleDeleteUserRedux(item)}
                                                         />
                                                     </Tooltip>
-
-                                                    {/* <DetailBtn userId={item.id} />  */}
-                                                    {/* Truyền userId xuống DetailBtn */}
-
-                                                    {/* <Tooltip title="Chi tiết">
-                                                    <Button
-                                                        shape="circle"
-                                                        icon={<InfoCircleOutlined />}
-                                                        onClick={() => this.handleDetailUser(item)}
-                                                    />
-                                                </Tooltip> */}
                                                 </td>
                                             </tr>
                                         )
@@ -96,13 +141,18 @@ class TestRedux extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        dataRedux: state.users
+        dataRedux: state.users,
+        EditRedux: state.EditRedux
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteUserRedux: (userdelete) => dispatch({ type: 'DELETE_USER_REDUX', payload: userdelete }),
-        addUserRedux: ()=>dispatch({ type: 'ADD_USER_REDUX'})
+        addUserRedux: () => dispatch({ type: 'ADD_USER_REDUX' }),
+        editUserRedux: (useredit) => dispatch({ type: 'EDIT_USER_REDUX', payload: useredit }),
+        saveUserRedux: () => dispatch({ type: 'SAVE_USER_REDUX' }),
+        updateEditRedux:(user)=>dispatch({type:'UPDATE_EDIT_REDUX', payload:user})
+
     }
 }
 

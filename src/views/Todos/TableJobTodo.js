@@ -12,6 +12,7 @@ class TableJobTodo extends React.Component {
     handleEditTodo = (todo) => {
         // this.props.EditTodo(todo);
         let { editTodobtn } = this.props;
+        console.log('check handle edit :', editTodobtn);
         if (editTodobtn.id) {
             // Gọi hàm EditTodo trong file cha và truyền thông tin công việc cần chỉnh sửa
             this.props.EditTodo(editTodobtn);
@@ -24,12 +25,12 @@ class TableJobTodo extends React.Component {
 
 
     }
-    handleSaveTodo=(todo)=>{
+    handleSaveTodo = (todo) => {
         this.props.EditTodo(todo);
         this.props.UpdateEditTodoBtn({});
         // toast.success('Update successfully!')
 
-        
+
     }
 
 
@@ -104,7 +105,7 @@ class TableJobTodo extends React.Component {
                                                     <Button
                                                         shape="circle"
                                                         icon={<CheckOutlined />}
-                                                    onClick={() => this.handleSaveTodo(item)}
+                                                        onClick={() => this.handleSaveTodo(item)}
                                                     />
                                                 </Tooltip>
                                                 :

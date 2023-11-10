@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Color from '../HOC/Color';
-import logo from '../../assets/image/boo.gif';
+import logo from '../../assets/image/kimoon.gif';
 
 // class HomePage extends React.Component {
 

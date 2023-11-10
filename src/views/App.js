@@ -9,6 +9,7 @@ import HomePage from "./Home/HomaPage";
 import { Routes, Route } from "react-router-dom";
 import { ListUser, DetailBtn } from "./User/ListUser";
 import DetailUser from "./User/DetailUser";
+import TestRedux  from "./Home/TestRedux";
 
 
 // 2 component: class component, function component(function, arrow)
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about" element={<MyComponent />} />
           <Route path="/user" element={<ListUser />} />
           <Route path="/user/:id" element={<DetailUser />} />
+          <Route path="/redux" element={<TestRedux />} />
         </Routes>
       </header>
 

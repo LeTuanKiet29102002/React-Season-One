@@ -19,6 +19,9 @@ class Nav extends React.Component {
                 <NavLink className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "active" : ""
                 } to="/user">User</NavLink>
+                <NavLink className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                } to="/redux">Redux</NavLink>
             </div>
         )
     }

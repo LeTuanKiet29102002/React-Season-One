@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { ListUser, DetailBtn } from "./User/ListUser";
 import DetailUser from "./User/DetailUser";
 import TestRedux  from "./Home/TestRedux";
+import Antd from "./AntdTable/Antd";
 
 
 // 2 component: class component, function component(function, arrow)
@@ -27,6 +28,7 @@ function App() {
           <Route path="/user" element={<ListUser />} />
           <Route path="/user/:id" element={<DetailUser />} />
           <Route path="/redux" element={<TestRedux />} />
+          <Route path="/antd" element={<Antd />} />
         </Routes>
       </header>
 
